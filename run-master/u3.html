@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap - File Uplad Plugin</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="mdb/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="mdb/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="mdb/css/addons/mdb-file-upload.css">
+  <script>
+  var ffa='';
+  var fc='';
+  var fp='';
+  </script>
+</head>
+
+<body class="app flex-row align-items-center">
+
+  <div class="flyout">
+    <!--Navbar-->
+    <nav class="navbar navbar-dark fixed-top navbar-expand-md scrolling-navbar unique-color-dark">
+      <a class="navbar-brand" href="#">
+        <img id="MDB-logo" src="https://ephod.ai/logo.png" width=32 alt="EPHOD Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"><h3>Gestionnaire de Sinistre –  Evaluation bijou</h3>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--/.Navbar-->
+
+    <main style="margin-top: 4rem;">
+
+        
+        <div class="container col-md-12 mx-auto my-5">
+          
+            
+          <section class="pt-5">
+            <h2 class="secondary-heading mb-3">
+              Descriptif : <input type="text"  value="" placeholder="ex.: Bague or 5g" name="ed_descr" id="ed_descr"
+              style="width:600px"/>
+                        </h2>
+ 
+            <p>Téléchargez les justificatifs:</p>
+            <div class="file-upload-wrapper">
+            <center>
+                <table><tr>
+                    <td align="center">
+              <h2 >Facture</h2>  
+              <span class="input-group mb-3" style="width:300px;margin: 10px">
+                <input type="file" id="file_facture" class="file_upload"/>
+              </span>
+              <p>Justificatif de possesion (jpg, png, pdf) <span id="h2facture"></span></p>
+              <td/>
+              <td align="center" >
+                    <h2 >Cértificat</h2> 
+              <span class="input-group mb-3" style="width:300px;margin: 10px" >
+                <input type="file" id="file_certificat" class="file_upload" style="width:350px"/>
+              </span>
+              <p>Justificatif de valeur (jpg, png, pdf) <span id="h2certificat"></span></p>
+              <td/>
+              <td align="center" >
+                  <h2 >Photo</h2> 
+              <span class="input-group mb-3" style="width:300px;margin: 10px">
+                <input type="file" id="file_photo" class="file_upload" style="width:350px"/>
+              </span>
+              <p>Justificatif d'existence (jpg, png, pdf) <span id="h2photo"></span></p>
+            </td></tr>
+            </table>
+            <br>
+            <button class="btn btn-danger px-4 bg-pink" type="submit" onclick="ephod()">Évaluer</button> 
+            </center>
+               
+                      
+            </div>
+
+          </section>
+        </div>
+
+    </main>
+    <footer class="page-footer mt-4 unique-color-dark">
+      <p class="footer-copyright mb-0 py-3 text-center">© 2019 Copyright: <a href="https://www.ephod.fr">
+          EPHOD.AI</a></p>
+    </footer>
+  </div>
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="mdb/js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="mdb/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="mdb/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="mdb/js/mdb.min.js"></script>
+  <script type="text/javascript" src="mdb/js/addons/datatables.min.js"></script>
+  <script type="text/javascript" src="mdb/js/addons/mdb-file-upload.js"></script>
+  <script>
+    $('.file_upload').file_upload();
+    
+    $("document").ready(function(){
+
+      $("#file_facture").change(function() {
+        console.log('facture file changed!');
+        var file_data = $('#file_facture').prop('files')[0];   
+        var form_data = new FormData();                  
+        form_data.append('file', file_data);
+        form_data.append('nature', 'facture');
+        ffa='*';
+        $.ajax({
+                    url: '/ws/upload', 
+                    dataType: 'text',  
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,                         
+                    type: 'post',
+                    success: function(data){
+                        console.log(data); 
+                        $("#h2facture").html('<i class="fab fa-mixcloud"></i>');
+                        var ejs;
+                        q="ejs="+data;
+                        eval(q)
+                        ffa=ejs["files"][0]["url"];
+                    }
+        });//ajax upload facture
+        
+      });//filefactur_changed
+
+      $("#file_certificat").change(function() {
+        console.log('certificat file changed!');
+        var file_data = $('#file_certificat').prop('files')[0];   
+        var form_data = new FormData();                  
+        form_data.append('file', file_data);
+        form_data.append('nature', 'certificat');
+        fc='*';
+        $.ajax({
+                    url: '/ws/upload', 
+                    dataType: 'text',  
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,                         
+                    type: 'post',
+                    success: function(data){
+                        console.log(data); 
+                        $("#h2certificat").html('<i class="fab fa-mixcloud"></i>');
+                        var ejs;
+                        q="ejs="+data;
+                        eval(q)
+                        fc=ejs["files"][0]["url"];
+                    }
+        });//ajax upload certificat
+        
+      });//file certificat_changed
+
+
+      $("#file_photo").change(function() {
+        console.log('photo file changed!');
+        var file_data = $('#file_photo').prop('files')[0];   
+        var form_data = new FormData();                  
+        form_data.append('file', file_data);
+        form_data.append('nature', 'photo');
+        form_data.append('skipocr', 'TRUE');
+        fp='*';
+        $.ajax({
+                    url: '/ws/upload', 
+                    dataType: 'text',  
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,                         
+                    type: 'post',
+                    success: function(data){
+                        console.log(data); 
+                        $("#h2photo").html('<i class="fab fa-mixcloud"></i>');
+                        var ejs;
+                        q="ejs="+data;
+                        eval(q)
+                        fp=ejs["files"][0]["url"];
+                    }
+        });//ajax upload photo
+        
+      });//file photo_changed
+  
+    });//on doc ready
+    function ephod(){
+      if((fc=="*")||(fp=="*")||(ffa=="*")){
+        console.log("waiting for uplads to finish")
+        setTimeout("ephod()",500);
+        return;
+      }
+      ffa=ffa.replace("/ws/img?file=","")
+      fc=fc.replace("/ws/img?file=","")
+      fp=fp.replace("/ws/img?file=","")
+      window.location.href=window.location.href.replace("u3.html","?ff="+ffa+"&fc="+fc+"&fp="+fp+"&d="+encodeURI($("#ed_descr").val())+"#u4a.html")
+      //run/?ff=R008-_HEjG0nn.jpg&fc=&fp=&d=#u4a.html
+    }
+  </script>
+
+</body>
+
+</html>

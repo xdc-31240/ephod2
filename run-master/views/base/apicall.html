@@ -1,0 +1,127 @@
+<!-- Plugins and scripts required by this view-->
+<script src="js/moment.js"> </script>
+<script src="js/apicall.js"></script>
+
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header"><i class="fa fa-plug"></i> Historique appels API </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <label class="col-form-label" for="doss">Dossier/Ref.</label>
+            <div class="col-md-2">
+              <input class="form-control" id="doss" type="text" name="doss" placeholder="Dossier No." />
+            </div>
+            <label class="col-form-label" for="ddate">Appel </label>
+            <div class="col-md-2">
+              <input class="form-control" id="ddate" type="date" name="ddate" placeholder="date" style="width:160px" />
+            </div>
+            <label class="col-form-label" for="text-input">&nbsp;&nbsp;&nbsp;Texte </label>
+            <div class="col-md-2">
+              <input class="form-control" id="text-input" type="text" name="text-input" placeholder="eg. coccinelle" />
+            </div>
+            <label class="col-form-label" for="user-input">User </label>
+            <div class="col-md-2">
+              <input class="form-control" id="user-input" type="text" name="user-input" placeholder="eg. mmarcel" />
+            </div>
+            <button class="btn btn-sm btn-primary" id="btn_search" type="button" onclick="flt()"><i class="fa fa-filter"></i> Recherche</button>
+          </div>
+          <div class="form-group row">
+            <table class="table table-responsive-sm table-bordered table-striped table-sm" id="tbapilist">
+              <thead>
+                <tr>
+                  <th>Date/Heure</th>
+                  <th>Dossier</th>
+                  <th>#</th>
+                  <th>Description</th>
+                  <th>Scan</th>
+                  <th>Réclamation</th>
+                  <th>Évaluation</th>
+                  <th>Valide?</th>
+                  <th>Commentaire</th>
+                </tr>
+              </thead>
+              <tbody id="tbbapilist">
+                <tr>
+                  <td>Pula Serghei</td>
+                  <td>2012/01/01</td>
+                  <td>Member</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                </tr>
+                <tr>
+                  <td>Zbyněk Phoibos</td>
+                  <td>2012/02/01</td>
+                  <td>Staff</td>
+                  <td><span class="badge badge-danger">Banned</span></td>
+                </tr>
+                <tr>
+                  <td>Einar Randall</td>
+                  <td>2012/02/01</td>
+                  <td>Admin</td>
+                  <td><span class="badge badge-secondary">Inactive</span></td>
+                </tr>
+                <tr>
+                  <td>Félix Troels</td>
+                  <td>2012/03/01</td>
+                  <td>Member</td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Aulus Agmundr</td>
+                  <td>2012/01/21</td>
+                  <td>Staff</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                </tr>
+                <tr>
+                  <td>Pula Serghei</td>
+                  <td>2012/01/01</td>
+                  <td>Member</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                </tr>
+                <tr>
+                  <td>Zbyněk Phoibos</td>
+                  <td>2012/02/01</td>
+                  <td>Staff</td>
+                  <td><span class="badge badge-danger">Banned</span></td>
+                </tr>
+                <tr>
+                  <td>Einar Randall</td>
+                  <td>2012/02/01</td>
+                  <td>Admin</td>
+                  <td><span class="badge badge-secondary">Inactive</span></td>
+                </tr>
+                <tr>
+                  <td>Félix Troels</td>
+                  <td>2012/03/01</td>
+                  <td>Member</td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Aulus Agmundr</td>
+                  <td>2012/01/21</td>
+                  <td>Staff</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <nav>
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li><i></i> &nbsp;
+                <button class="btn btn-sm btn-danger" id="btn_purge" type="button" onclick="purge()"><i class="fa fa-trash"></i> Tout effacer</button>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-->
+  </div>
+  <!-- /.row-->
+</div>

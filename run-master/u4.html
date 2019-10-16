@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>EPHOD.AI Évaluation bijou</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.min.css"
+    rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    @media (min-width: 768px) {
+      .h-md-100 {
+        height: 100vh;
+      }
+    }
+
+    .btn-round {
+      border-radius: 30px;
+    }
+
+    .bg-indigo {
+      background: gold;
+    }
+
+    .bg-cyan {
+      background: rgb(40, 204, 168)
+    }
+
+    .bg-diamond {
+      background: rgba(145, 221, 245, 0.795)
+    }
+
+    .bg-lowgrey {
+      background: rgb(236, 226, 236);
+    }
+
+    .text-red {
+      color: #bd5739ec;
+    }
+
+    .text-cyan {
+      color: #35bdff;
+    }
+
+    .text-black {
+      color: #000000;
+    }
+
+    .text-value {
+      font-size: 1.3125rem;
+      font-weight: 600;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #23282c;
+      text-align: left;
+      background-color: #e4e5e6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .img-magnifier-container {
+      position: relative;
+    }
+
+    .img-magnifier-glass {
+      position: absolute;
+      border: 3px solid #000;
+      border-radius: 30px;
+      cursor: none;
+      /*Set the size of the magnifier glass:*/
+      width: 160px;
+      height: 80px;
+    }
+  </style>
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/js/bootstrap-select.min.js"></script>
+
+  <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+</head>
+
+<body class="app flex-row align-items-center">
+
+  <div class="flyout">
+    <!--Navbar-->
+    <nav class="navbar navbar-dark fixed-top navbar-expand-md scrolling-navbar unique-color-dark">
+      <a class="navbar-brand" href="#">
+        <img id="MDB-logo" src="https://ephod.ai/logo.png" width=32 alt="EPHOD Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">
+              <h3>Evaluation "<i>Bague en or 5g diamants</i>"</h3>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--/.Navbar-->
+  </div>
+
+  <div id="threegorgesdam">
+    <main style="margin-top: 4rem;">
+
+      <div class="container ">
+        <div class="row align-content-top">
+          <!-- First Half -->
+
+          <div class="col-sm-5 p-0  bg-white h-md-100">
+            <div class="text-white d-md-flex align-items-center h-100 p-0 text-center justify-content-center">
+              <div class="logoarea pt-5 pb-5">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#" id="tabFacture" onclick="carusel('tabFacture')">Facture</a>
+                </li>
+                <li class=" nav-item">
+                      <a class="nav-link" href="#" id="tabCertificat" onclick="carusel('tabCertificat')">Crtificat</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" id="tabPhoto" onclick="carusel('tabPhoto')">Photo</a>
+                  </li>
+
+                </ul>
+                <div class="img-magnifier-container">
+                  <img src="https://ephod.ai/logo.png" id="myimage" style="border:1px solid #777;" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second Half -->
+
+          <div class="col-sm-4 p-0 bg-lowgrey h-md-100  ">
+            <div class="text-white .flex-row  ">
+              <div class="row col-sm">
+                <div>&nbsp;</div>
+              </div>
+
+              <div>
+                <div class="card m-1">
+                  <div class="card-header bg-indigo"><strong>Métal</strong>
+                  </div>
+                  <div class="card-body">
+                    <form class="form-inline">
+                      <select class="selectpicker form-control form-control-sm col-sm-3" data-show-subtext="true"
+                        data-live-search="true" id="cb_metal">
+                        <option value="or" data-tokens="or">Or</option>
+                        <option value="argent" data-tokens="argent">Argent</option>
+                        <option value="platine" data-tokens="platine">Platine</option>
+                      </select>
+
+                      <select class="selectpicker form-control form-control-sm col-sm-4" data-show-subtext="true"
+                        data-live-search="true" id="cb_karat">
+                        <option value="375" data-tokens="9K">375&#8240; - 9K</option>
+                        <option value="585" data-tokens="14K">585&#8240; - 14K</option>
+                        <option value="750" data-tokens="18K">750&#8240; - 18K</option>
+                        <option value="916" data-tokens="22K">916&#8240; - 22K</option>
+                        <option value="925" data-tokens="22K">925&#8240; ~ 22K</option>
+                      </select>
+                      <input class=" form-control form-control-sm col-sm-3" type="number" placeholder="poids(g)"
+                        value="1.10" id="ed_poids" />
+                      <span class="text-black">g</span>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="card m-1">
+                  <div class="card-header bg-diamond">
+                    <table width="100%">
+                      <tr>
+                        <td>
+                          <strong>Gemmes</strong>
+                        </td>
+                        <td align="right">
+                          <i class="fas fa-plus-circle fa-2x"></i>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="card-body">
+                    <div class="card m-1" id="card_gem1">
+                      <div class="card-body">
+                        <form class="form-inline">
+                          <table>
+                            <tr>
+                              <td>
+                                <select class="selectpicker form-control form-control-sm" style="width:200px"
+                                  data-show-subtext="true" data-live-search="true" id="cb_gem1_type">
+                                  <option value="(none)" data-tokens="(none)" selected="selected">--type--</option>
+                                  <option value="diamant" data-tokens="diamant">Diamant</option>
+                                  <option value="diamants" data-tokens="diamants">Pavé Diamants</option>
+                                  <option value="saphire" data-tokens="saphire">Saphire</option>
+                                  <option value="rubis" data-tokens="rubis">Rubis</option>
+                                  <option value="emeraude" data-tokens="emeraude">Émeraude</option>
+                                  <option value="aigue-marine" data-tokens="aigue-marine">Aigue-marine</option>
+                                </select>
+
+                                <input class=" form-control form-control-sm col-sm-3" type="number"
+                                  placeholder="poids(g)" value="1.10" id="ed_gem1_ct" />
+                                <span class="text-black">ct.</span>
+                                &nbsp;&nbsp;
+                                <i class="fas fa-trash-alt text-red"></i>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <select class="selectpicker form-control form-control-sm " data-show-subtext="true"
+                                  data-live-search="true" id="cb_gem1_color">
+                                  <option value="(none)" data-tokens="(none)" selected="selected">--couleur--</option>
+                                  <option value="D" data-tokens="D">D : Blanc Exc. +</option>
+                                  <option value="E" data-tokens="E">E : Blanc Exc.</option>
+                                  <option value="F" data-tokens="F">F : Blanc Extra +</option>
+                                  <option value="G" data-tokens="G">G : Blanc Extra</option>
+                                  <option value="H" data-tokens="H" selected>H : Blanc </option>
+                                  <option value="I" data-tokens="I">I : Nuancé </option>
+                                  <option value="J" data-tokens="J>">J-M : Foncé </option>
+                                </select>
+                              </td>
+                            </tr>
+                          </table>
+                        </form>
+                      </div>
+
+                      <div class="card m-1" id="card_gem2">
+                        <div class="card-body">
+                          <form class="form-inline">
+                            <select class="selectpicker form-control form-control-sm col-sm-3" data-show-subtext="true"
+                              data-live-search="true" id="cb_gem2_type">
+                              <option value="diamant" data-tokens="diamant">Diamant</option>
+                              <option value="diamants" data-tokens="diamants">Pavé Diamants</option>
+                              <option value="saphire" data-tokens="saphire">Saphire</option>
+                              <option value="rubis" data-tokens="rubis">Rubis</option>
+                              <option value="emeraude" data-tokens="emeraude">Émeraude</option>
+                              <option value="aigue-marine" data-tokens="aigue-marine">Aigue-marine</option>
+                            </select>
+
+                            <select class="selectpicker form-control form-control-sm col-sm-3" data-show-subtext="true"
+                              data-live-search="true" id="cb_gem2_color">
+                              <option value="D" data-tokens="D">D : Blanc Exc. +</option>
+                              <option value="E" data-tokens="E">E : Blanc Exc.</option>
+                              <option value="F" data-tokens="F">F : Blanc Extra +</option>
+                              <option value="G" data-tokens="G">G : Blanc Extra</option>
+                              <option value="H" data-tokens="H" selected>H : Blanc </option>
+                              <option value="I" data-tokens="I">I : Nuancé </option>
+                              <option value="J" data-tokens="J>">J-M : Foncé </option>
+                            </select>
+                            <input class=" form-control form-control-sm col-sm-3" type="number" placeholder="poids(g)"
+                              value="1.10" id="ed_gem2_ct" />
+                            <span class="text-black">ct.</span>
+                            &nbsp;&nbsp;
+                            <i class="fas fa-trash-alt text-red"></i>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="card m-1">
+                    <div class="card-header bg-cyan"><strong>Marque et Modèle</strong> </div>
+                    <div class="card-body">
+                      <select class="selectpicker form-control form-control-sm col-sm-4" data-show-subtext="true"
+                        data-live-search="true">
+                        <option data-tokens="aucune">--aucune--</option>
+                        <option data-tokens="cartier">Cartier</option>
+                        <option data-tokens="hermes">Hermès</option>
+                        <option data-tokens="dinh van">Dinh Van</option>
+                      </select>
+
+                      <select class="selectpicker form-control form-control-sm col-sm-4" data-show-subtext="true"
+                        data-live-search="true">
+                        <option data-tokens="aucune">--aucune--</option>
+                        <option data-tokens="9K">Trinity</option>
+                        <option data-tokens="14K">Love</option>
+                        <option data-tokens="18K">Chance of Love</option>
+                        <option data-tokens="22K">Click n Clac</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--3rd half-->
+
+
+          <div class="col-sm-3 p-0 bg-yellow h-md-100  ">
+            <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+              <div id="ecard">
+                <div class="card">
+                  <div class="card-header"><strong>Évaluation</strong> </div>
+                  <div class="card-body">
+                    <div class="text-value" id="evalue">...en cours...</div>
+                    <div id="evaluecomment">EPHOD traite vos entrées...</div>
+                    <div class="progress progress-xs my-2">
+                      <div class="progress-bar bg-warning" id="pgres" role="progressbar" style="width: 25%"
+                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div><small class="text-muted" id="evaluecomment2">Veuillez patienter quelques
+                      sécondes...</small>
+                    <div>&nbsp;</div>
+                    <center>Structure de la valeur (%) </center>
+                    <div id="cacanvas">
+                      <canvas id="canvas-6"> </canvas>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="input-prepend input-group">
+                      <label class="col-md-6 col-form-label-sm" for="appendedPrependedInput">Ajustement</label>
+                      <input class="numar form-control" id="appendedPrependedInput" size="7" type="number"
+                        value="12.00">
+                      <div class="input-group-append"><span class="input-group-text">%</span></div>
+
+                    </div>
+                    <button class="btn btn-sm btn-primary" type="submit" onclick=""><i class="fa fa-dot-circle-o"></i>
+                      OK</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- end center-->
+        </div>
+
+      </div>
+  </div>
+  </main>
+  <footer class="page-footer mt-4 unique-color-dark">
+    <p class="footer-copyright mb-0 py-3 text-center">© 2019 Copyright: <a href="https://www.ephod.fr">
+        EPHOD.AI</a></p>
+  </footer>
+  </div>
+  <!-- SCRIPTS -->
+
+  <script>
+    //$("input[type='number']").inputSpinner();
+    var magnifiermoving = true;
+    var glass = false;
+
+    function magnify(imgID, zoom) {
+      var img, w, h, bw;
+      img = document.getElementById(imgID);
+
+      /* Create magnifier glass: */
+      if (!glass) {
+        glass = document.createElement("DIV");
+        img.parentElement.insertBefore(glass, img);
+        glass.addEventListener("mousemove", moveMagnifier);
+        img.addEventListener("mousemove", moveMagnifier);
+        glass.addEventListener("mousedown", clickMagnifier);
+        img.addEventListener("mousedown", clickMagnifier);
+        /*and also for touch screens:*/
+        glass.addEventListener("touchmove", moveMagnifier);
+        img.addEventListener("touchmove", moveMagnifier);
+
+      }
+      glass.setAttribute("class", "img-magnifier-glass");
+
+      /* Insert magnifier glass: */
+
+
+      /* Set background properties for the magnifier glass: */
+      glass.style.backgroundImage = "url('" + img.src + "')";
+      glass.style.backgroundRepeat = "no-repeat";
+      glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+      bw = 3;
+      w = glass.offsetWidth / 2;
+      h = glass.offsetHeight / 2;
+
+      /* Execute a function when someone moves the magnifier glass over the image: */
+
+
+      function clickMagnifier(e) {
+        magnifiermoving = !magnifiermoving;
+        console.log("mag moving:=")
+        console.log(magnifiermoving)
+        if (magnifiermoving) {
+          glass.style.cursor = "none"
+        } else {
+          glass.style.cursor = "move"
+        }
+      }
+
+      function moveMagnifier(e) {
+        if (!magnifiermoving) {
+          return;
+        }
+        var pos, x, y;
+        /* Prevent any other actions that may occur when moving over the image */
+        e.preventDefault();
+        /* Get the cursor's x and y positions: */
+        pos = getCursorPos(e);
+        x = pos.x;
+        y = pos.y;
+        /* Prevent the magnifier glass from being positioned outside the image: */
+        if (x > img.width - (w / zoom)) {
+          x = img.width - (w / zoom);
+        }
+        if (x < w / zoom) {
+          x = w / zoom;
+        }
+        if (y > img.height - (h / zoom)) {
+          y = img.height - (h / zoom);
+        }
+        if (y < h / zoom) {
+          y = h / zoom;
+        }
+        /* Set the position of the magnifier glass: */
+        glass.style.left = (x - w) + "px";
+        glass.style.top = (y - h) + "px";
+        /* Display what the magnifier glass "sees": */
+        glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+      }
+
+      function getCursorPos(e) {
+        var a, x = 0,
+          y = 0;
+        e = e || window.event;
+        /* Get the x and y positions of the image: */
+        a = img.getBoundingClientRect();
+        /* Calculate the cursor's x and y coordinates, relative to the image: */
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
+        /* Consider any page scrolling: */
+        x = x - window.pageXOffset;
+        y = y - window.pageYOffset;
+        return {
+          x: x,
+          y: y
+        };
+      }
+    }
+
+    magnify("myimage", 3);
+    var imgf = "https://ephod.ai/logo.png";
+    var imgc = imgf;
+    var imgp = imgf;
+
+    function carusel(tabname) {
+      $('#tabFacture').removeClass("active")
+      $('#tabCertificat').removeClass("active")
+      $('#tabPhoto').removeClass("active")
+      $('#' + tabname).addClass("active")
+      I = document.getElementById("myimage")
+      I.onload = resizemagnify;
+      switch (tabname) {
+        case "tabFacture":
+          $("#myimage").prop('src', imgf)
+          break
+        case "tabCertificat":
+          $("#myimage").prop('src', imgc)
+          break
+        case "tabPhoto":
+          $("#myimage").prop('src', imgp)
+          break
+      }
+
+
+    }
+
+    function resizemagnify() {
+      w = $("#myimage").width()
+      h = $("#myimage").height()
+      console.log(w, h)
+      if (w > h) {
+        if (w > 300) {
+          $("#myimage").width(300);
+        }
+      }
+      if (w <= h) {
+        if (h > 400) {
+          $("#myimage").height(400);
+        }
+      }
+
+      magnify("myimage", 3);
+    }
+
+    function chartit(props) {
+      var chartColors = {
+        yellow: "rgb(255, 205, 86)",
+        red: "rgb(255, 99, 132)",
+        orange: "rgb(255, 159, 64)",
+        green: "rgb(75, 192, 192)",
+        blue: "rgb(54, 162, 235)",
+        purple: "rgb(153, 102, 255)",
+        grey: "rgb(201, 203, 207)"
+      };
+      var color = Chart.helpers.color;
+      document.getElementById('cacanvas').innerHTML = '<canvas id="canvas-6"> </canvas>';
+      var polarAreaChart = new Chart($('#canvas-6'), {
+        type: 'polarArea',
+        data: {
+          labels: ['Metal', 'Gemme', 'Marque', 'Style', 'État'],
+          datasets: [{
+            data: [props.dueto_metal, props.dueto_gem, props.dueto_brand, 0, 0],
+            backgroundColor: [color(chartColors.orange).alpha(0.5).rgbString(), color(chartColors.blue).alpha(
+                0.5).rgbString(), color(chartColors.green).alpha(0.5).rgbString(), color(chartColors.purple)
+              .alpha(0.5).rgbString(), color(chartColors.red).alpha(0.5).rgbString()
+            ]
+          }]
+        },
+        options: {
+          responsive: true
+        }
+      });
+      console.log("charted.");
+    }
+    /*
+    // default bidon
+        var ejs={"dueto_metal":50,"dueto_gem":40,"dueto_brand":10,eur_from:220,eur_to:250}
+          var s = 'Valeur proposée par Ephod';
+          var dv = ejs.eur_from + " - " + ejs.eur_to + " &euro;";
+          var z = "Les informations pour l'inférence ont été détectées.";
+          var pgc = "bg-success";
+          var pg = 100;
+         
+          document.getElementById("evalue").innerHTML = dv;
+          document.getElementById("evaluecomment").innerHTML = s;
+          document.getElementById("pgres").style.width = pg + "%";
+          document.getElementById("pgres").className = "progress-bar " + pgc;
+          document.getElementById("evaluecomment2").innerHTML = z;
+    chartit(ejs)
+    */
+
+
+    function getUrlParameter(sParam) {
+      var sPageURL = decodeURIComponent(window.location.search.substring(1));
+      var array = []
+      var sURLVariables = sPageURL.split('&');
+      for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+          array.push(sParameterName[1]);
+        }
+      }
+      return array;
+    }
+    var ff = '',
+      fc = '',
+      fp = '',
+      des = '';
+
+
+    function dracu(ufile) {
+      var formData = new FormData();
+      formData.append('ufile', ufile);
+      formData.append('textarea-input', des)
+
+      $.ajax({
+        url: '/ws/eval',
+        type: 'POST',
+        xhr: function xhr() {
+          var myXhr = $.ajaxSettings.xhr();
+          return myXhr;
+        },
+        success: function success(data) {
+          console.log(data)
+          //alert("Data Uploaded: "+data);
+          //alert("success")
+          document.getElementById("ecard").style.display = "block";
+          var ejs = 0;
+          ejs = data;
+          chartit(ejs);
+          var s = 'Valeur determinée par Ephod';
+          var dv = ejs.eur_from + " - " + ejs.eur_to + " &euro;";
+          var z = "Toutes les informations nécessaires à l'inférence ont été détectées.";
+          var pgc = "bg-success";
+          var pg = 100;
+
+          if (ejs.approx == 1) {
+            s = "Bonne approximation";
+            z = "L'inférence est partiellement basée sur les attributs les plus communs.";
+            pgc = "bg-warning";
+            pg = 67;
+          }
+
+          if (ejs.approx > 1) {
+            s = "Approximation très brute";
+            z = "L'inférence est plutôt basée sur les attributs les plus courants.";
+            pgc = "bg-danger";
+            pg = 33;
+          }
+
+          if (ejs.error == "dump") {
+            s = "Approximation impossible - infos insuffisantes.";
+            z = "pas assez d'éléments pour l'inférence";
+            pg = 5;
+            pgc = "bg-dark";
+            dv = "?";
+          }
+          ///document.getElementById("ufile").value = ejs.ufile;
+          document.getElementById("evalue").innerHTML = dv;
+          document.getElementById("evaluecomment").innerHTML = s;
+          document.getElementById("pgres").style.width = pg + "%";
+          document.getElementById("pgres").className = "progress-bar " + pgc;
+          document.getElementById("evaluecomment2").innerHTML = z;
+          if ($("#textarea-input").html() == "") {
+            $("#textarea-input").html(ejs.text);
+          }
+          console.log(ejs);
+          edpoids = document.getElementById("ed_poids")
+          edpoids.setAttribute('value', ejs["weight_g"]);
+          $("#card_gem1").hide();
+          $("#card_gem2").hide();
+          //      $("#card_gem3").hide();
+          //      $("#card_gem4").hide();
+          debugger;
+          for (g = 1; g <= ejs["num_gems"]; g++) {
+            var gtype = ejs["gem" + g.toString()]["type"];
+            var CB = document.getElementById("cb_gem" + g.toString() + "_type");
+            for (io = 0; io < CB.options.length; io++) {
+              o = CB.options[io]
+              if (o.value.toLowerCase() == gtype.toLowerCase()) {
+                CB.selectedIndex = io;
+                CB.value = o.value;
+                $("#" + "cb_gem" + g.toString() + "_type").selectpicker('val', o.value);
+                break;
+              }
+            }
+            $('#' + "cb_gem" + g.toString() + "_type").prop('selected', false).find('option:first').prop(
+              'selected', true);
+            //$("#cb_gem"+g.toString()+"_type").val(gtype);
+            $("#card_gem" + g.toString()).show();
+          }
+
+
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false
+      }).fail(function (jqXHR, textStatus) {
+        alert("Request failed: " + textStatus); // alert(jqXHR)
+      });
+    }
+
+
+
+    function initEphod() {
+      des = getUrlParameter('d')[0];
+      fa = getUrlParameter('ff')[0];
+      fc = getUrlParameter('fc')[0];
+      fp = getUrlParameter('fp')[0];
+      imgf = "/ws/img?file=" + fa;
+      imgc = "/ws/img?file=" + fc;
+      imgp = "/ws/img?file=" + fp;
+      carusel("tabFacture");
+      dracu(fa)
+    }
+    initEphod()
+  </script>
+
+</body>
+
+</html>

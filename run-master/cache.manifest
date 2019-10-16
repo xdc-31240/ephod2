@@ -1,0 +1,22 @@
+CACHE MANIFEST
+#r3
+
+NETWORK:
+*
+
+CACHE:
+node_modules/@coreui/icons/css/coreui-icons.min.css
+node_modules/flag-icon-css/css/flag-icon.min.css
+node_modules/font-awesome/css/font-awesome.min.css
+node_modules/simple-line-icons/css/simple-line-icons.css
+css/bootstrap-select.min.css
+vendors/pace-progress/css/pace.min.css
+up/js/vendor/jquery.ui.widget.js
+node_modules/chart.js/dist/Chart.min.js
+node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js
+js/bootstrap-select.min.1.13.5.js
+node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js
+node_modules/chart.js/dist/Chart.min.js
+
+FALLBACK:
+/ /offline.php

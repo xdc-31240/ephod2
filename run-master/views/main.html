@@ -1,0 +1,133 @@
+<!-- Plugins and scripts required by this view-->
+<script src="node_modules/chart.js/dist/Chart.min.js"></script>
+<script src="node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js"></script>
+<script src="js/main.js"></script>
+
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right">
+            <button class="btn btn-transparent p-0" type="button"><i class="fa fa-gavel"></i></button>
+          </div>
+          <div class="text-value">57 743</div>
+          <div>Encheres</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas class="chart" id="card-chart1" height="70"></canvas>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right">
+            <button class="btn btn-transparent p-0" type="button"><i class="fa fa-balance-scale"></i></button>
+          </div>
+          <div class="text-value">37 &euro;/g</div>
+          <div>Au 24K</div>
+        </div>
+        <div class="chart-wrapper mt-3" style="height:70px;">
+          <canvas class="chart" id="card-chart3" height="70"></canvas>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-info">
+        <div class="card-body pb-0">
+          <button class="btn btn-transparent p-0 float-right" type="button"><i class="icon-diamond"></i></button>
+          <div class="text-value">$848/ct</div>
+          <div>Diamant 0.2ct HSI</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas class="chart" id="card-chart2" height="70"></canvas>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-success">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right">
+            <button class="btn btn-transparent p-0" type="button"><i class="cui-euro"></i></button>
+          </div>
+          <div class="text-value">1.13 $</div>
+          <div>EUR/USD</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas class="chart" id="card-chart4" height="70"></canvas>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-->
+  </div>
+  <!-- /.row-->
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4 class="card-title mb-0">Evaluations</h4>
+          <div class="small text-muted">March 2019</div>
+        </div>
+        <!-- /.col-->
+        <div class="col-sm-7 d-none d-md-block">
+          <button class="btn btn-primary float-right" type="button"><i class="icon-cloud-download"></i></button>
+          <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
+            <label class="btn btn-outline-secondary">
+              <input id="option1" type="radio" name="options" autocomplete="off" /> Day
+            </label>
+            <label class="btn btn-outline-secondary active">
+              <input id="option2" type="radio" name="options" autocomplete="off" checked="" /> Month
+            </label>
+            <label class="btn btn-outline-secondary">
+              <input id="option3" type="radio" name="options" autocomplete="off" /> Year
+            </label>
+          </div>
+        </div>
+        <!-- /.col-->
+      </div>
+      <!-- /.row-->
+      <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+        <canvas class="chart" id="main-chart" height="300"></canvas>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row text-center">
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Appels API</div><strong>865</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Valeur totale</div><strong>1106932 &euro;</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Précision</div><strong>Correcte (87%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Réjets</div><strong>129 Erreurs </strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Réactivité</div><strong>32s</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

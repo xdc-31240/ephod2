@@ -1,0 +1,125 @@
+<!-- Plugins and scripts required by this view-->
+<script src="js/moment.js"> </script>
+<script src="node_modules/chart.js/dist/Chart.min.js"></script>
+<script src="node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js"></script>
+<script src="js/gold.js"></script>
+
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+        <div class="card-header"><i class="fa fa-balance-scale"></i>[Au] Prix de l'or (€/g)</div>
+        <div class="card-body" style="padding:10px">
+          <form class="form-horizontal" action="" method="post">
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">8K : 333 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="12.00" />
+                  <div class="input-group-append"><span class="input-group-text">€</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">9K : 375 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="13.00" />
+                  <div class="input-group-append"><span class="input-group-text">€</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">10K : 416 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="15.00" />
+                  <div class="input-group-append"><span class="input-group-text">€ </span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">12K : 500 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="18.00" />
+                  <div class="input-group-append"><span class="input-group-text">€</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">14K : 585 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="20.00" />
+                  <div class="input-group-append"><span class="input-group-text">€</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">18K : 750 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="26.00" />
+                  <div class="input-group-append"><span class="input-group-text">€</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">22K : 916 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="31.00" />
+                  <div class="input-group-append"><span class="input-group-text">€ </span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">24K : 999 ‰</label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" type="number" value="36.00" />
+                  <div class="input-group-append"><span class="input-group-text">€ </span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m10px">
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <label class="col-md-6 col-form-label" for="appendedPrependedInput">ESG 24K : </label>
+                  <input class="numar form-control" id="appendedPrependedInput" size="5" disabled="disabled" readonly="readonly" type="number" value="36.00" />
+                  <div class="input-group-append"><span class="input-group-text">€ </span></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-actions m10px">
+              <button class="btn btn-primary" type="submit">Sauvgarder</button>
+              <button class="btn btn-secondary" type="button">Abandon</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.col https://www.metaux-precieux.fr/cours-dachat-or/-->
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">Historique de cours :
+          <select class="form-control-sm" id="iepocadeaur" style="width:100px" onchange="rechartgold()">
+            <option value="0">30 ans</option>
+            <option value="1">3 ans</option>
+            <option value="2">1 an</option>
+            <option value="3">1 mois</option>
+          </select>
+          <div class="card-header-actions"><a class="card-header-action" href="https://www.metaux-precieux.fr/courbes-du-cours/" target="_blank"><small class="text-muted">ESG</small></a></div>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrapper" id="ceausescu">
+            <canvas id="canvas-1"> </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row-->
+</div>

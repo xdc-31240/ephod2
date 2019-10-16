@@ -1,0 +1,30 @@
+@charset "UTF-8";
+@font-face { font-family: Circuitboard; src: url('css/Circuitboard.otf'); } 
+.ephod {
+    font-family: Circuitboard
+}
+.ephod-logo {
+    font-size:2.5em;
+    color: #26bfb5;
+}
+.numar{
+    text-align:right
+}
+.ascuns{
+    display: none;
+}
+.m10px{
+    margin: 10px;
+}
+.w200px{
+    width:200px;
+}
+.w50px{
+    width:50px;
+}
+
+.bar {
+    height: 18px;
+    background: green;
+}
+/*# sourceMappingURL=style2.css.map */

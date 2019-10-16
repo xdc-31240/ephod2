@@ -1,0 +1,1 @@
+{"version":3,"sources":["style2.css"],"names":[],"mappings":"AAAA,iBAAiB;AACjB,aAAa,0BAA0B,CAAC,iCAAiC,EAAE;AAC3E;IACI,yBAAyB;CAC5B;AACD;IACI,gBAAgB;IAChB,YAAY;CACf","file":"style2.css","sourcesContent":["@charset \"UTF-8\";\n@font-face { font-family: Circuitboard; src: url('css/Circuitboard.otf'); } \n.ephod {\n    font-family: Circuitboard\n}"]}
